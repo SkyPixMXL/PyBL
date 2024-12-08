@@ -32,6 +32,8 @@ function onResults(results) {
     canvasElement.width,
     canvasElement.height
   );
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    alert("Votre navigateur ne supporte pas la caméra.");}
   if (results.multiHandLandmarks) {
     for (const landmarks of results.multiHandLandmarks) {
       drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
