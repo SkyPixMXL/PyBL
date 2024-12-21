@@ -16,24 +16,6 @@
     </head>
 
     <body>
-	<script>
-	        document.addEventListener('DOMContentLoaded', () => {
-	            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	                navigator.mediaDevices.getUserMedia({ video: true })
-	                    .then((stream) => {
-	                        const videoElement = document.querySelector('.input_video');
-	                        videoElement.srcObject = stream;
-	                        videoElement.play();
-	                    })
-	                    .catch((error) => {
-	                        console.error('Erreur d’accès à la caméra :', error.message);
-	                        alert('Impossible d’accéder à la caméra. Vérifiez les permissions.');
-	                    });
-	            } else {
-	                alert('getUserMedia non pris en charge sur ce navigateur.');
-	            }
-	        });
-    </script>
         <header>
 			<nav>
                 <a href="https://pybl.000webhostapp.com/"> <img src="../Images/PyBL.png" alt="PyBL" aria-hidden="false" width="60"> </a>
