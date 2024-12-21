@@ -1,77 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hands Detection</title>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./mainh.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="https://pybl.000webhostapp.com/"> <img src="../Images/PyBL.png" alt="PyBL" aria-hidden="false" width="60"> </a>
-            <h1>Hands detection</h1>
-            <div class="right">
-                <p>Connexion</p>
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hands detection</title>
+        <link rel="stylesheet" href="./mainh.css">
+	<script> navigator.mediaDevices.getUserMedia({ video: true }) </script>
+	
+    </head>
+
+    <body>
+        <header>
+			<nav>
+                <a href="https://pybl.000webhostapp.com/"> <img src="../Images/PyBL.png" alt="PyBL" aria-hidden="false" width="60"> </a>
+				<h1>Hands detection</h1>
+				<div class="right">
+					<p>Connexion</p>
+				</div>
+			</nav>
+		</header>
+        
+        <div class="container">
+		<button id="start-camera" class="button_p">Démarrer la caméra</button>
+            
+            <video hidden class="input_video"></video>
+            
+            <canvas class="output_canvas"  width="1280px" height="720px"></canvas>
+		
+            
+            <button onclick="button_P()" class="button_p">Pause</button>
+            
+            <div class="dropdown">
+                <button class="btn-top">
+                    <span>Settings</span>
+                    <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 407.437 407.437"
+                        style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
+                        <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+                    </svg>
+                </button>
+                <div class="bloc-links">
+                    <ul>
+                        <li>
+                            <a href="hands_projet_1.html">Sign language</a>
+                        </li>
+                        <li>
+                            <a href="hands_projet_2.html">Keyboard</a>
+                        </li>
+                        <li>
+                            <a >Bêta</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-    </header>
-    
-    <div class="container">
-        <!-- Video element hidden until permission is granted -->
-        <video class="input_video" hidden playsinline autoplay muted></video>
-
-        <!-- Button to request camera access -->
-        <button id="start-camera" class="button_p">Démarrer la caméra</button>
-
-        <canvas class="output_canvas" width="1280px" height="720px"></canvas>
-
-        <!-- Settings dropdown for navigation -->
-        <div class="dropdown">
-            <button class="btn-top">
-                <span>Settings</span>
-                <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 407.437 407.437"
-                    style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
-                    <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
-                </svg>
-            </button>
-            <div class="bloc-links">
-                <ul>
-                    <li><a href="hands_projet_1.html">Sign language</a></li>
-                    <li><a href="hands_projet_2.html">Keyboard</a></li>
-                    <li><a>Bêta</a></li>
-                </ul>
-            </div>
+              
+            
         </div>
-    </div>
 
-    <script>
-        // Handle the "Démarrer la caméra" button click
-        document.querySelector('#start-camera').addEventListener('click', () => {
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Request access to the video stream
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then((stream) => {
-                        // If access is granted, display the video stream
-                        const videoElement = document.querySelector('.input_video');
-                        videoElement.srcObject = stream;
-                        videoElement.hidden = false; // Show the video
-                        videoElement.play();
-                    })
-                    .catch((error) => {
-                        // Handle error if access is denied
-                        console.error('Erreur d’accès à la caméra :', error.message);
-                        alert('Impossible d’accéder à la caméra. Vérifiez les permissions.');
-                    });
-            } else {
-                alert('getUserMedia non pris en charge sur ce navigateur.');
-            }
-        });
-    </script>
-</body>
+        <script src="./script_hands.js"></script>
+    </body>
+
 </html>
