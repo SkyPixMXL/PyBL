@@ -12,9 +12,7 @@
         <title>Hands detection</title>
         <link rel="stylesheet" href="./mainh.css">
 	<script> navigator.mediaDevices.getUserMedia({ video: true }) </script>
-	<script> document.querySelector('.button_p').addEventListener('click', () => { if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) { navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {const videoElement = document.querySelector('.input_video');videoElement.srcObject = stream;videoElement.play();}).catch((error) => {console.error('Erreur d’accès à la caméra :', error.message);alert('Impossible d’accéder à la caméra. Vérifiez les permissions.');});} else {alert('getUserMedia non pris en charge sur ce navigateur.');}});</script>
-
-
+	
     </head>
 
     <body>
