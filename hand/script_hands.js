@@ -69,8 +69,7 @@ const camera = new Camera(videoElement, {
   width: 1280,
   height: 720,
 });
-camera.start();
-var flag = false;
+var flag = true;
 function button_P() {
   if (flag == false) {
     camera.stop();
