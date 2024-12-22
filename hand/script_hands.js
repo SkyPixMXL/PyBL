@@ -81,3 +81,8 @@ function button_P() {
     flag = false;
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+const button = document.querySelector('.myButton');
+button.addEventListener('click', () => {button.textContent = 'Nom changé !';});
+});
