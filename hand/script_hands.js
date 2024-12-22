@@ -83,6 +83,6 @@ function button_P() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-const button = document.querySelector('.myButton');
+const button = document.querySelector('.button_P');
 button.addEventListener('click', () => {button.textContent = 'Nom changé !';});
 });
