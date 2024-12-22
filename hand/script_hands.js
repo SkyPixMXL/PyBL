@@ -72,7 +72,6 @@ const camera = new Camera(videoElement, {
 var flag = true;
 function button_P() {
   if (flag == false) {
-    button.textContent = 'Stop';
     camera.stop();
     flag = true;
   } else if (flag == true) {
