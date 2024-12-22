@@ -70,13 +70,15 @@ const camera = new Camera(videoElement, {
   height: 720,
 });
 var flag = true;
+buttonp=document.querySelectorAll(".button_P");
 function button_P() {
   if (flag == false) {
     camera.stop();
     flag = true;
   } else if (flag == true) {
+    buttonp=document.querySelectorAll(".button_P");
     camera.start();
-    button_P.textContent = 'Nouveau Texte';
+    buttonp.textContent = 'Nouveau Texte';
     flag = false;
   }
 }
