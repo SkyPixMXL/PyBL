@@ -72,11 +72,11 @@ const camera = new Camera(videoElement, {
 var flag = true;
 function button_P() {
   if (flag == false) {
-    button.textContent = 'Resume';
+    
     camera.stop();
     flag = true;
   } else if (flag == true) {
-    button.textContent = 'Stop';
+  
     camera.start();
     flag = false;
   }
