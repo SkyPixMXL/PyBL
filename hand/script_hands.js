@@ -76,8 +76,8 @@ function button_P() {
     camera.stop();
     flag = true;
   } else if (flag == true) {
-  
     camera.start();
+    button.textContent = 'Stop';
     flag = false;
   }
 }
