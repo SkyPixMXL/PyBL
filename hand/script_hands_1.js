@@ -246,6 +246,7 @@ const camera = new Camera(videoElement, {
   width: 1280,
   height: 720,
 });
+
 var flag = true;
 const buttonp = document.getElementById("boutp")
 function button_P() {
