@@ -76,11 +76,7 @@ function button_P() {
     flag = true;
   } else if (flag == true) {
     camera.start();
+    button_P.textContent = 'Nouveau Texte';
     flag = false;
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-const button = document.querySelector('.button_P');
-button.addEventListener('click', () => {button.textContent = 'Nom changé !';});
-});
