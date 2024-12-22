@@ -73,10 +73,11 @@ var flag = true;
 function button_P() {
   if (flag == false) {
     camera.stop();
+    document.getElementById("boutp").textContent = 'Resume';
     flag = true;
   } else if (flag == true) {
     camera.start();
-    document.getElementById("boutp").textContent = 'Nouveau Texte';
+    document.getElementById("boutp").textContent = 'Stop';
     flag = false;
   }
 }
