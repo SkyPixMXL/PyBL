@@ -246,14 +246,16 @@ const camera = new Camera(videoElement, {
   width: 1280,
   height: 720,
 });
-camera.start();
-var flag = false;
+var flag = true;
+const buttonp = document.getElementById("boutp")
 function button_P() {
   if (flag == false) {
     camera.stop();
+    buttonp.textContent = 'Resume';
     flag = true;
   } else if (flag == true) {
     camera.start();
+    buttonp.textContent = 'Stop';
     flag = false;
   }
 }
