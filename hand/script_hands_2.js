@@ -8,6 +8,8 @@ const liItems = document.querySelectorAll(".dropdown li");
 
 let toggleIndex;
 let nli = [];
+let fl = 0;
+let coul="#006eff"
 btnDrop.addEventListener("click", toggleDropDown);
 function toggleDropDown() {
   if (!toggleIndex) {
@@ -35,14 +37,26 @@ function onResults(results) {
   );
   if (results.multiHandLandmarks) {
     for (const landmarks of results.multiHandLandmarks) {
-      landmarks_k = [landmarks[8]];
-      drawLandmarks(canvasCtx, landmarks_k, {
-        color: "#006eff",
-        lineWidth: 2,
-      });
-      x = parseInt(landmarks[8]["x"] * -1280);
-      y = parseInt(landmarks[8]["y"] * 720);
-      tex(x, y);
+      x0=(landmarks[4]["x"]+landmarks[8]["x"])/2;
+      y0=(landmarks[4]["y"]+landmarks[8]["y"])/2;
+      x = parseInt(x0 * -1280);
+      y = parseInt(y0 * 720);
+      d0=((landmarks[4]["x"]-landmarks[8]["x"])**2+(landmarks[4]["y"]-landmarks[8]["y"])**2)**0.5
+      landmarks_k2=[{x: x0, y: y0, z: 0, visibility: undefined}];
+      if (d0<0.08) {
+        drawLandmarks(canvasCtx, landmarks_k2, {
+          color: coul,
+          lineWidth: (1/d0**0.2*10)
+        });
+      }
+      
+      if (d0<0.08){
+        if (fl==0){
+          tex(x, y);
+        }
+      }else {
+        fl=0
+      }
     }
   }
   keyboard();
@@ -223,6 +237,11 @@ function keyPressed(no) {
     textarea.value = textarea.value.slice(0, -1);
   } else {
     textarea.value += val;
+    fl=1
+    coul= "#62AE41"
+    setTimeout(() => {
+      coul="#006eff";
+    }, 150);
   }
 }
 const hands = new Hands({
